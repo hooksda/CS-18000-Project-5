@@ -98,8 +98,16 @@ public class Warehouse {
                                 int carryWeight = s.nextInt();
                                 break;
                             case 2:
+                                System.out.println("Enter License Plate No.:");
+                                licensePlate = s.nextLine();
+                                System.out.println("Enter Maximum Carry Weight:");
+                                carryWeight = s.nextInt();
                                 break;
                             case 3:
+                                System.out.println("Enter License Plate No.:");
+                                licensePlate = s.nextLine();
+                                System.out.println("Enter Maximum Carry Weight:");
+                                carryWeight = s.nextInt();
                                 break;
                             default:
                                 System.out.println(errorMessage);
@@ -164,8 +172,16 @@ public class Warehouse {
                                     int carryWeight = s.nextInt();
                                     break;
                                 case 2:
+                                    System.out.println("Enter License Plate No.:");
+                                    licensePlate = s.nextLine();
+                                    System.out.println("Enter Maximum Carry Weight:");
+                                    carryWeight = s.nextInt();
                                     break;
                                 case 3:
+                                    System.out.println("Enter License Plate No.:");
+                                    licensePlate = s.nextLine();
+                                    System.out.println("Enter Maximum Carry Weight:");
+                                    carryWeight = s.nextInt();
                                     break;
                                 default:
                                     System.out.println(errorMessage);
@@ -177,7 +193,7 @@ public class Warehouse {
                             break;
                         }
                     case 3:
-                        prime = false;
+                        prime = true;
                         break;
                     case 4:
                     case 5:
