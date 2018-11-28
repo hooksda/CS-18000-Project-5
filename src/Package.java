@@ -13,7 +13,13 @@ public class Package {
      */
     //============================================================================
     //TODO
-    
+    public Package() {
+        this.id = "";
+        this.product = "";
+        this.weight = 0;
+        this.price = 0;
+        this.destination = new ShippingAddress();
+    }
     //============================================================================
     /**
      * Constructor
@@ -27,7 +33,13 @@ public class Package {
      */
     //============================================================================
     //TODO
-    
+    public Package(String id, String product, double weight, double price, ShippingAddress destination) {
+        this.id = id;
+        this.product = product;
+        this.weight = weight;
+        this.price = price;
+        this.destination = destination;
+    }
     //============================================================================
 
     /**
@@ -35,7 +47,7 @@ public class Package {
      */
     public String getID() {
     	//TODO
-    	
+    	return id;
     	}
     
     
@@ -44,7 +56,8 @@ public class Package {
      * @return Name of product in package
      */
     public String getProduct() {
-    	//TODO   
+    	//TODO
+        return product;
     }
     
     
@@ -55,6 +68,7 @@ public class Package {
      */
     public void setProduct(String product) {
     	//TODO
+        this.product = product;
     }
 
     
@@ -65,6 +79,7 @@ public class Package {
      */
     public double getPrice() {
     	//TODO
+        return price;
     }
 
     
@@ -75,6 +90,7 @@ public class Package {
      */
     public void setPrice(double price) {
     	//TODO
+        this.price = price;
     }
 
     
@@ -85,6 +101,7 @@ public class Package {
      */
     public double getWeight() {
     	//TODO
+        return weight;
     }
 
     
@@ -95,6 +112,7 @@ public class Package {
      */
     public void setWeight(double weight) {
     	//TODO
+        this.weight = weight;
     }
 
     
@@ -104,6 +122,7 @@ public class Package {
      */
     public ShippingAddress getDestination() {
     	//TODO
+        return destination;
     }
 
     
@@ -114,6 +133,7 @@ public class Package {
      */
     public void setDestination(ShippingAddress destination) {
     	//TODO
+        this.destination = destination;
     }
 
     
@@ -123,6 +143,19 @@ public class Package {
      */
     public String shippingLabel() {
     	//TODO
+         return "====================\n" +
+                "TO: " + destination.getName() + "\n" + destination.getAddress() + "\n" +
+                 destination.getCity() + ", " + destination.getState() + ", " + destination.getZipCode() + "\n" +
+                "Weight: " + weight + "\n" +
+                "Price: " + price + "\n" +
+                "Product:" + product + "\n" + "====================";
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
