@@ -40,7 +40,7 @@ public class Drone extends Vehicle {
     @Override
     public double getProfit() {
     	//TODO
-    	
+    	return getProfit();
     }
 
     /**
@@ -58,6 +58,7 @@ public class Drone extends Vehicle {
     @Override
     public String report() {
     	//TODO
+        return "";
     }
     
    

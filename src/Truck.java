@@ -41,7 +41,7 @@ public class Truck extends Vehicle {
     @Override
     public double getProfit() {
         //TODO
-    	
+    	return 0;
     }
 
     /**
@@ -59,7 +59,7 @@ public class Truck extends Vehicle {
     @Override
     public String report() {
         //TODO
-    	
+    	return "";
     }
 
 

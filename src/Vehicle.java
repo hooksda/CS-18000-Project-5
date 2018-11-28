@@ -201,8 +201,14 @@ public class Vehicle implements Profitable {
         //TODO
     }
 
-    
 
+    @Override
+    public double getProfit() {
+        return 0;
+    }
 
-
+    @Override
+    public String report() {
+        return null;
+    }
 }
