@@ -11,7 +11,9 @@ public class Drone extends Vehicle {
      * Default Contructor 
      */
     //============================================================================
-    //TODO
+    public Drone() {
+        
+    }
     
     //============================================================================
 
@@ -22,8 +24,9 @@ public class Drone extends Vehicle {
      * @param maxWeight    maximum weight that the vehicle can hold
      */
     //============================================================================
-    //TODO
-    
+    public Drone(String licensePlate, double maxWeight) {
+        super(licensePlate, maxWeight);
+    }
     //============================================================================
 
     /*
