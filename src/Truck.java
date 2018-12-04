@@ -11,11 +11,9 @@ public class Truck extends Vehicle {
     /**
      * Default Constructor
      */
-    //============================================================================
-    //TODO
-    
-    //============================================================================
+public Truck() {
 
+}
     /**
      * Constructor
      * 
@@ -23,7 +21,9 @@ public class Truck extends Vehicle {
      * @param maxWeight    maximum weight that the vehicle can hold
      */
     //============================================================================
-    //TODO
+    public Truck(String licensePlate, double maxWeight) {
+        super(licensePlate, maxWeight);
+    }
     
     //============================================================================
 
