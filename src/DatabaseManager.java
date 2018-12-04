@@ -35,17 +35,18 @@ public class DatabaseManager {
                 String[] details = strings.get(i).split(",");
                 if (details.length == 2) {
                     if (details[0].equals("Drone")) {
-                       vehicles.add(new Drone(details[1], details[2]));
+                       vehicles.add(new Drone(details[1], Double.parseDouble(details[2])));
                     } else if (details[0].equals("Truck")) {
-
-                    } else if (details[0].equals("CargobPlane")) {
-
+                        vehicles.add(new Truck(details[1], Double.parseDouble(details[2])));
+                    } else if (details[0].equals("Cargo Plane")) {
+                        vehicles.add(new CargoPlane(details[1], Double.parseDouble(details[2])));
                     }
                 }
             }
         } catch (IOException e) {
 
         }
+        return vehicles;
     }
 
     
@@ -74,6 +75,43 @@ public class DatabaseManager {
      */
     public static ArrayList<Package> loadPackages(File file) {
     	//TODO
+        ArrayList<Package> packages = new ArrayList<>();
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            ArrayList<String> strings = new ArrayList<>();
+            for (String line; (line = br.readLine()) != null;) {
+                strings.add(line);
+            }
+            String id = "";
+            String productName = "";
+            double weight = 0.0;
+            String name = "";
+            double price = 0.0;
+            String address = "";
+            String city = "";
+            String state = "";
+            int zipCode = 0;
+            for (int i = 0; i < strings.size(); i++) {
+                String[] details = strings.get(i).split(",");
+                if (details.length == 9) {
+                    id = details[0];
+                    productName = details[1];
+                    weight = Double.parseDouble(details[2]);
+                    name = details[3];
+                    price = Double.parseDouble(details[4]);
+                    address = details[5];
+                    city = details[6];
+                    state = details[7];
+                    zipCode = Integer.parseInt(details[8]);
+                }
+                ShippingAddress shippingAddress = new ShippingAddress(name, address, city, state, zipCode);
+                packages.add(new Package(id, productName, weight, price, shippingAddress));
+            }
+        } catch (IOException e) {
+
+        }
+        return packages;
     }
     
     
