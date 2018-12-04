@@ -34,7 +34,13 @@ public class DatabaseManager {
             for (int i = 0; i < strings.size(); i++) {
                 String[] details = strings.get(i).split(",");
                 if (details.length == 2) {
+                    if (details[0].equals("Drone")) {
+                       vehicles.add(new Drone(details[1], details[2]));
+                    } else if (details[0].equals("Truck")) {
 
+                    } else if (details[0].equals("CargobPlane")) {
+
+                    }
                 }
             }
         } catch (IOException e) {
