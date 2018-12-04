@@ -146,7 +146,6 @@ public class Vehicle implements Profitable {
         currentWeight = 0;
     }
 
-
     /**
      * Returns true if the Vehicle has reached its maximum weight load, false
      * otherwise.
