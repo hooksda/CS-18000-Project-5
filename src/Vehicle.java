@@ -146,6 +146,7 @@ public class Vehicle implements Profitable {
         currentWeight = 0;
     }
 
+
     /**
      * Returns true if the Vehicle has reached its maximum weight load, false
      * otherwise.
@@ -153,7 +154,7 @@ public class Vehicle implements Profitable {
      * @return whether or not Vehicle is full
      */
     public boolean isFull() {
-        if(getCurrentWeight() >= getMaxWeight()) {
+        if(getCurrentWeight() == getMaxWeight()) {
             return true;
         } else {
             return false;
