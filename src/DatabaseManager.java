@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -26,10 +23,21 @@ public class DatabaseManager {
      */
     public static ArrayList<Vehicle> loadVehicles(File file) {
        //TODO
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
         try {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
-        } catch (FileNotFoundException e) {
+            ArrayList<String> strings = new ArrayList<>();
+            for (String line; (line = br.readLine()) != null;) {
+                strings.add(line);
+            }
+            for (int i = 0; i < strings.size(); i++) {
+                String[] details = strings.get(i).split(",");
+                if (details.length == 2) {
+
+                }
+            }
+        } catch (IOException e) {
 
         }
     }
