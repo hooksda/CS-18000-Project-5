@@ -128,6 +128,17 @@ public class DatabaseManager {
      */
     public static double loadProfit(File file) {
     	//TODO
+        FileReader fr = null;
+        double profit = 0.0;
+        try {
+            fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String profit1 = br.readLine();
+            profit = Double.parseDouble(profit1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return profit;
     }
 
     
@@ -143,6 +154,16 @@ public class DatabaseManager {
      */
     public static int loadPackagesShipped(File file) {
     	//TODO
+        int shipped = 0;
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            shipped = Integer.parseInt(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return shipped;
     }
 
     
@@ -177,6 +198,23 @@ public class DatabaseManager {
      */
     public static void saveVehicles(File file, ArrayList<Vehicle> vehicles) {
     	//TODO
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < vehicles.size(); i++) {
+                if (vehicles.get(i) instanceof Truck) {
+                    bw.write("Truck," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight());
+                }else if (vehicles.get(i) instanceof Drone) {
+                    bw.write("Drone," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight());
+                }else if (vehicles.get(i) instanceof CargoPlane) {
+                    bw.write("Cargo Plane," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight());
+                }
+            }
+            bw.flush();
+            fw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     
@@ -216,6 +254,14 @@ public class DatabaseManager {
 
     public static void saveProfit(File file, double profit) {
     	//TODO
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(Double.toString(profit));
+            bw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     
@@ -231,6 +277,14 @@ public class DatabaseManager {
 
     public static void savePackagesShipped(File file, int nPackages) {
     	//TODO
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(nPackages);
+            bw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     
