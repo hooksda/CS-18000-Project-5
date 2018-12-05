@@ -64,9 +64,17 @@ public class CargoPlane extends Vehicle implements Profitable {
      */
     @Override
     public double getProfit() {
+<<<<<<< HEAD
+        double summation = 0;
+        for (int i = 0; i < super.getPackages().size(); i++) {
+            summation += super.getPackages().get(i).getPrice();
+        }
+        return summation - (super.getMaximumRange() * GAS_RATE);
+=======
         //TODO
 
         return 0;
+>>>>>>> origin/master
     }
 
     /**
