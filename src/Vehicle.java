@@ -22,6 +22,7 @@ public class Vehicle {
         currentWeight = 0.0;
         zipDest = 0;
         packages = new ArrayList<>();
+        maximumRange = 0;
     }
 
     /**
@@ -36,6 +37,7 @@ public class Vehicle {
         currentWeight = 0.0;
         zipDest = 0;
         packages = new ArrayList<>();
+        maximumRange = 0;
     }
 
     /**
@@ -117,6 +119,9 @@ public class Vehicle {
         return packages;
     }
 
+    public int getMaximumRange() {
+        return maximumRange;
+    }
 
     /**
      * Adds Package to the vehicle only if has room to carry it (adding it would not
