@@ -43,6 +43,7 @@ public class DatabaseManager {
                     }
                 }
             }
+            br.close();
         } catch (IOException e) {
 
         }
@@ -108,6 +109,7 @@ public class DatabaseManager {
                 ShippingAddress shippingAddress = new ShippingAddress(name, address, city, state, zipCode);
                 packages.add(new Package(id, productName, weight, price, shippingAddress));
             }
+            br.close();
         } catch (IOException e) {
 
         }
@@ -135,6 +137,7 @@ public class DatabaseManager {
             BufferedReader br = new BufferedReader(fr);
             String profit1 = br.readLine();
             profit = Double.parseDouble(profit1);
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,9 +163,12 @@ public class DatabaseManager {
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             shipped = Integer.parseInt(line);
+            br.close();
+            fr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return shipped;
     }
 
@@ -178,6 +184,18 @@ public class DatabaseManager {
      */
     public static boolean loadPrimeDay(File file) {
     	//TODO
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            if (line.equals("0")) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     
@@ -212,6 +230,8 @@ public class DatabaseManager {
             }
             bw.flush();
             fw.flush();
+            bw.close();
+            fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -240,6 +260,22 @@ public class DatabaseManager {
      */
     public static void savePackages(File file, ArrayList<Package> packages) {
     	//TODO
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < packages.size(); i++) {
+                bw.write(packages.get(i).getID() + "," + packages.get(i).getProduct() +
+                        "," + packages.get(i).getWeight() + "," + packages.get(i).getPrice() + "," +
+                        packages.get(i).getDestination().getName() + ","
+                        + packages.get(i).getDestination().getAddress() + "," +
+                        packages.get(i).getDestination().getCity() + "," + packages.get(i).getDestination().getState() +
+                        "," + packages.get(i).getDestination().getZipCode());
+            }
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     
@@ -259,6 +295,7 @@ public class DatabaseManager {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(Double.toString(profit));
             bw.flush();
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -282,6 +319,7 @@ public class DatabaseManager {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(nPackages);
             bw.flush();
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -302,5 +340,18 @@ public class DatabaseManager {
 
     public static void savePrimeDay(File file, boolean primeDay) {
     	//TODO
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            if (primeDay) {
+                bw.write("0");
+            } else {
+                bw.write("1");
+            }
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
