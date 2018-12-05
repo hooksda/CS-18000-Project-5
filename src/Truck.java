@@ -40,8 +40,11 @@ public Truck() {
      */
     @Override
     public double getProfit() {
-        //TODO
-    	return 0;
+        double summation = 0;
+        for (int i = 0; i < super.getPackages().size(); i++) {
+            summation += super.getPackages().get(i).getPrice();
+        }
+        return summation - (super.getMaximumRange() * GAS_RATE);
     }
 
     /**
