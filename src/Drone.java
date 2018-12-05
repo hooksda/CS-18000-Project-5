@@ -4,10 +4,10 @@ import java.util.ArrayList;
  * <h1>Drone</h1> Represents a Drone
  */
 
-public class Drone extends Vehicle {
+public class Drone extends Vehicle implements Profitable {
 
     final private double GAS_RATE = 1.33;
-    /**
+     /**
      * Default Contructor 
      */
     //============================================================================

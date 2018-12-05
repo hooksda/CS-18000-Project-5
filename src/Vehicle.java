@@ -4,11 +4,12 @@ import java.util.ArrayList;
  * <h1>Vehicle</h1> Represents a vehicle
  */
 
-public class Vehicle implements Profitable {
+public class Vehicle {
     private String licensePlate;
     private double maxWeight;
     private double currentWeight;
     private int zipDest;
+    private int maximumRange;
     private ArrayList<Package> packages;
 
 
@@ -125,8 +126,9 @@ public class Vehicle implements Profitable {
      * @return whether or not it was successful in adding the package
      */
     public boolean addPackage(Package pkg) {
-        if (getCurrentWeight() + pkg.getWeight() < getMaxWeight()) {
+        if (getCurrentWeight() + pkg.getWeight() <= getMaxWeight()) {
             packages.add(pkg);
+            currentWeight += pkg.getWeight();
             return true;
         } else {
             return false;
@@ -154,7 +156,7 @@ public class Vehicle implements Profitable {
      * @return whether or not Vehicle is full
      */
     public boolean isFull() {
-        if(getCurrentWeight() == getMaxWeight()) {
+        if (getCurrentWeight() == getMaxWeight()) {
             return true;
         } else {
             return false;
@@ -173,17 +175,22 @@ public class Vehicle implements Profitable {
      * @param warehousePackages List of packages to add from
      */
     public void fill(ArrayList<Package> warehousePackages) {
-        //TODO
-    }
-
-
-    @Override
-    public double getProfit() {
-        return 0;
-    }
-
-    @Override
-    public String report() {
-        return null;
+        int distance = 0;
+        boolean loop = true;
+        while (loop) {
+            for (int i = 0; i < warehousePackages.size(); i++) {
+                if (!isFull() || warehousePackages.size() != packages.size()) {
+                    distance = zipDest - warehousePackages.get(i).getDestination().getZipCode();
+                    if (Math.abs(distance) == getZipDest()) {
+                        if (addPackage(warehousePackages.get(i))) {
+                            maximumRange = distance;
+                        }
+                    }
+                } else {
+                    loop = false;
+                }
+                distance++;
+            }
+        }
     }
 }
