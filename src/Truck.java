@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * <h1>Truck</h1> Represents a Truck
  */
-public class Truck extends Vehicle {
+public class Truck extends Vehicle implements Profitable{
 
     private final double GAS_RATE = 1.66;
 
