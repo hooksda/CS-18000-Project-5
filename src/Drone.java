@@ -46,7 +46,7 @@ public class Drone extends Vehicle implements Profitable {
         for (int i = 0; i < super.getPackages().size(); i++) {
             summation += super.getPackages().get(i).getPrice();
         }
-    	return summation - (super.getMaximumRange() - GAS_RATE);
+    	return summation - (super.getMaximumRange() * GAS_RATE);
     }
 
     /**
