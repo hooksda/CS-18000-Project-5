@@ -87,7 +87,7 @@ public class CargoPlane extends Vehicle implements Profitable {
      */
     @Override
     public String report() {
-        return "==========Truck Report==========\n" +
+        return "==========Plane Report==========\n" +
                 "License Plate No.: " + super.getLicensePlate() + '\n' +
                 "Destination: " + super.getZipDest() + "\n" +
                 "Weight Load: " + super.getCurrentWeight() + "/" + super.getMaxWeight() + "\n" +
