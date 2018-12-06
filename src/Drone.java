@@ -63,8 +63,12 @@ public class Drone extends Vehicle implements Profitable {
      */
     @Override
     public String report() {
-    	//TODO
-        return "";
+        return "==========Drone Report==========\n" +
+                "License Plate No.: " + super.getLicensePlate() + '\n' +
+                "Destination: " + super.getZipDest() + "\n" +
+                "Weight Load: " + super.getCurrentWeight() + "/" + super.getMaxWeight() + "\n" +
+                "Net Profit: " + getProfit() + "\n" +
+                "==============================";
     }
     
    

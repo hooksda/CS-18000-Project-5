@@ -45,7 +45,7 @@ public class CargoPlane extends Vehicle implements Profitable {
                 } else {
                     loop = false;
                 }
-                distance = distance + 10;
+                distance = (distance + 1) * 10;
             }
         }
     }
@@ -85,10 +85,13 @@ public class CargoPlane extends Vehicle implements Profitable {
      */
     @Override
     public String report() {
-        //TODO
-
-        return null;
+        return "==========Truck Report==========\n" +
+                "License Plate No.: " + super.getLicensePlate() + '\n' +
+                "Destination: " + super.getZipDest() + "\n" +
+                "Weight Load: " + super.getCurrentWeight() + "/" + super.getMaxWeight() + "\n" +
+                "Net Profit: " + getProfit() + "\n" +
+                "==============================";
     }
-
-
 }
+
+
