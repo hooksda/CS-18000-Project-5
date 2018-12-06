@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * <h1>CargoPlane</h1> Represents a Cargo Plane
  */
-public class CargoPlane extends Vehicle {
+public class CargoPlane extends Vehicle implements Profitable {
     final double GAS_RATE = 2.33;
 
     /**
@@ -31,8 +31,23 @@ public class CargoPlane extends Vehicle {
      */
     @Override
     public void fill(ArrayList<Package> warehousePackages) {
-        //TODO
-
+        int distance = 0;
+        boolean loop = true;
+        while (loop) {
+            for (int i = 0; i < warehousePackages.size(); i++) {
+                if (!isFull() || warehousePackages.size() != super.getPackages().size()) {
+                    distance = super.getZipDest() - warehousePackages.get(i).getDestination().getZipCode();
+                    if (Math.abs(distance) == getZipDest()) {
+                        if (addPackage(warehousePackages.get(i))) {
+                            distance = super.getMaximumRange();
+                        }
+                    }
+                } else {
+                    loop = false;
+                }
+                distance = distance + 10;
+            }
+        }
     }
 
     /*
@@ -51,6 +66,7 @@ public class CargoPlane extends Vehicle {
     public double getProfit() {
         //TODO
 
+        return 0;
     }
 
     /**
@@ -69,6 +85,7 @@ public class CargoPlane extends Vehicle {
     public String report() {
         //TODO
 
+        return null;
     }
 
 
