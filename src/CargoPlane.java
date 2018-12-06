@@ -42,7 +42,7 @@ public class CargoPlane extends Vehicle implements Profitable {
                             distance = super.getMaximumRange();
                         }
                     }
-                    distance = (distance + 1) * 10;
+                    distance += 10;
                 }
             } else {
                 loop = false;
