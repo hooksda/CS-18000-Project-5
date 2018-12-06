@@ -167,7 +167,7 @@ public class Vehicle {
             return false;
         }
     }
-    
+
 
     /**
      * Fills vehicle with packages with preference of date added and range of its
@@ -183,19 +183,20 @@ public class Vehicle {
         int distance = 0;
         boolean loop = true;
         while (loop) {
-            for (int i = 0; i < warehousePackages.size(); i++) {
-                if (!isFull() || warehousePackages.size() != packages.size()) {
+            if (!isFull() && warehousePackages.size() != packages.size()) {
+                for (int i = 0; i < warehousePackages.size(); i++) {
                     distance = zipDest - warehousePackages.get(i).getDestination().getZipCode();
                     if (Math.abs(distance) == getZipDest()) {
                         if (addPackage(warehousePackages.get(i))) {
                             maximumRange = distance;
                         }
                     }
-                } else {
-                    loop = false;
                 }
                 distance++;
+            } else {
+                loop = false;
             }
         }
     }
 }
+
