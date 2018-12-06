@@ -34,21 +34,23 @@ public class CargoPlane extends Vehicle implements Profitable {
         int distance = 0;
         boolean loop = true;
         while (loop) {
-            for (int i = 0; i < warehousePackages.size(); i++) {
-                if (!isFull() || warehousePackages.size() != super.getPackages().size()) {
+            if (!isFull() && warehousePackages.size() != super.getPackages().size()) {
+                for (int i = 0; i < warehousePackages.size(); i++) {
                     distance = super.getZipDest() - warehousePackages.get(i).getDestination().getZipCode();
                     if (Math.abs(distance) == getZipDest()) {
                         if (addPackage(warehousePackages.get(i))) {
                             distance = super.getMaximumRange();
                         }
                     }
-                } else {
-                    loop = false;
+                    distance = (distance + 1) * 10;
                 }
-                distance = (distance + 1) * 10;
+            } else {
+                loop = false;
             }
         }
     }
+
+
 
     /*
      * =============================================================================
