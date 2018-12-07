@@ -1,5 +1,3 @@
-import javax.xml.crypto.Data;
-import java.awt.image.DataBuffer;
 import java.io.File;
 import java.util.*;
 
@@ -11,7 +9,7 @@ public class Warehouse {
     final static String folderPath = "files/";
     final static File VEHICLE_FILE = new File(folderPath + "VehicleList.csv");
     final static File PACKAGE_FILE = new File(folderPath + "PackageList.csv");
-    final static File PROFIT_FILE = new File(folderPath + "Profit.txt");
+    final static File PROFIT_FILE = new File("files/Profit.txt");
     final static File N_PACKAGES_FILE = new File(folderPath + "NumberOfPackages.txt");
     final static File PRIME_DAY_FILE = new File(folderPath + "PrimeDay.txt");
     final static double PRIME_DAY_DISCOUNT = .15;

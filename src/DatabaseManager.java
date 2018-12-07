@@ -99,8 +99,8 @@ public class DatabaseManager {
                     id = details[0];
                     productName = details[1];
                     weight = Double.parseDouble(details[2]);
-                    name = details[3];
-                    price = Double.parseDouble(details[4]);
+                    price = Double.parseDouble(details[3]);
+                    name = details[4];
                     address = details[5];
                     city = details[6];
                     state = details[7];
