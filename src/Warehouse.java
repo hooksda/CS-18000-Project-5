@@ -96,15 +96,12 @@ public class Warehouse {
                     packed.shippingLabel();
                     break;
                 case 2:
-                    System.out.println("Vehicle Options: \n" +
-                            "1) Truck\n" +
-                            "2) Drone\n" +
-                            "3) Cargo Plane");
-                    /**
-                     * TODO;
-                     * This while loop is not infinite must be fixed;
-                     */
-                    while (true) {
+                    boolean something = true;
+                    while (something) {
+                        System.out.println("Vehicle Options: \n" +
+                                "1) Truck\n" +
+                                "2) Drone\n" +
+                                "3) Cargo Plane");
                         switch (s.nextInt()) {
                             case 1:
                                 System.out.println("Enter License Plate No.:");
@@ -113,6 +110,7 @@ public class Warehouse {
                                 int carryWeight = s.nextInt();
                                 Truck truck = new Truck(licensePlate, carryWeight);
                                 vehicles.add(truck);
+                                something = false;
                                 break;
                             case 2:
                                 System.out.println("Enter License Plate No.:");
@@ -121,6 +119,7 @@ public class Warehouse {
                                 carryWeight = s.nextInt();
                                 Drone drone = new Drone(licensePlate, carryWeight);
                                 vehicles.add(drone);
+                                something = false;
                                 break;
                             case 3:
                                 System.out.println("Enter License Plate No.:");
@@ -129,15 +128,12 @@ public class Warehouse {
                                 carryWeight = s.nextInt();
                                 CargoPlane cargoPlane = new CargoPlane(licensePlate, carryWeight);
                                 vehicles.add(cargoPlane);
+                                something = false;
                                 break;
                             default:
                                 System.out.println(errorMessage);
-                                System.out.println("Vehicle Options: \n" +
-                                        "1) Truck\n" +
-                                        "2) Drone\n" +
-                                        "3) Cargo Plane");
+
                         }
-                        break;
                     }
                 case 3:
 
@@ -155,6 +151,12 @@ public class Warehouse {
                                 "4) Send First Available");
                         switch (s.nextInt()) {
                             case 1:
+                                for (int i = 0; i < vehicles.size(); i++) {
+                                    if (vehicles.get(i) instanceof Truck) {
+                                        profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                        vehicles.remove(i);
+                                    }
+                                }
                             case 2:
                             case 3:
                             case 4:
