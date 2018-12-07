@@ -141,7 +141,7 @@ public class Warehouse {
                 case 4:
                     if (vehicles.size() == 0) {
                         System.out.println("Error: No vehicles available.");
-                    } else if (packages.size() == 0){
+                    } else if (packages.size() == 0) {
                         System.out.println("Error: No packages available.");
                     } else {
                         System.out.println("Options:\n" +
@@ -154,12 +154,50 @@ public class Warehouse {
                                 for (int i = 0; i < vehicles.size(); i++) {
                                     if (vehicles.get(i) instanceof Truck) {
                                         profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                        packagesShipped += vehicles.get(i).getPackages().size();
                                         vehicles.remove(i);
+                                        break;
                                     }
                                 }
                             case 2:
+                                for (int i = 0; i < vehicles.size(); i++) {
+                                    if (vehicles.get(i) instanceof Drone) {
+                                        profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
+                                        packagesShipped += vehicles.get(i).getPackages().size();
+                                        vehicles.remove(i);
+                                        break;
+                                    }
+                                }
                             case 3:
+                                for (int i = 0; i < vehicles.size(); i++) {
+                                    if (vehicles.get(i) instanceof CargoPlane) {
+                                        profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
+                                        packagesShipped += vehicles.get(i).getPackages().size();
+                                        vehicles.remove(i);
+                                        break;
+                                    }
+                                }
                             case 4:
+                                for (int i = 0; i < vehicles.size(); i++) {
+                                    if (vehicles.get(i) != null) {
+                                        if (vehicles.get(i) instanceof CargoPlane) {
+                                            profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
+                                            packagesShipped += vehicles.get(i).getPackages().size();
+                                            vehicles.remove(i);
+                                            break;
+                                        } else if (vehicles.get(i) instanceof Drone) {
+                                            profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
+                                            packagesShipped += vehicles.get(i).getPackages().size();
+                                            vehicles.remove(i);
+                                            break;
+                                        } else if (vehicles.get(i) instanceof Truck) {
+                                            profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                            packagesShipped += vehicles.get(i).getPackages().size();
+                                            vehicles.remove(i);
+                                            break;
+                                        }
+                                    }
+                                }
                         }
                     }
 
