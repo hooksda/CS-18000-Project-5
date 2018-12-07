@@ -14,11 +14,12 @@ public class Warehouse {
     final static File PRIME_DAY_FILE = new File(folderPath + "PrimeDay.txt");
     final static double PRIME_DAY_DISCOUNT = .15;
 
-    public static void printStatisticReport(double profits, int packagesShipped, int numberOfPackages) {
+    public static void printStatisticsReport(double profits, int packagesShipped, int numberOfPackages) {
         System.out.print("==========Statistics==========\n");
-        String.format("%s ", "Profits: " + profits + "\n");
-        String.format("%s ", "Packages Shipped: " + packagesShipped + "\n");
-        String.format("%s ", "Packages in Warehouse: " + numberOfPackages + "\n");
+       String p = String.format("%s ", "Profits: " + profits + "\n");
+       String ps = String.format("%s ", "Packages Shipped: " + packagesShipped + "\n");
+       String np = String.format("%s ", "Packages in Warehouse: " + numberOfPackages + "\n");
+        System.out.println(p + ps + np);
         System.out.println("==============================");
 
     }
@@ -209,7 +210,7 @@ public class Warehouse {
                     }
 
                 case 5:
-                    printStatisticReport(profitingOffSlaveLabor, packagesShipped, packages.size()
+                    printStatisticsReport(profitingOffSlaveLabor, packagesShipped, packages.size()
                             - packagesShipped);
 
                 case 6:
