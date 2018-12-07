@@ -211,8 +211,9 @@ public class Warehouse {
                     }
 
                 case 5:
-                    printStatisticReport(profitingOffSlaveLabor, packagesShipped, packages.size()
-                            - packagesShipped);
+                    printStatisticReport(profitingOffSlaveLabor, packagesShipped,
+                            packages.size() - packagesShipped);
+                    break;
                 case 6:
                     break asdf;
                 default:
