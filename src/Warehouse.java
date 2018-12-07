@@ -16,6 +16,13 @@ public class Warehouse {
     final static File PRIME_DAY_FILE = new File(folderPath + "PrimeDay.txt");
     final static double PRIME_DAY_DISCOUNT = .15;
 
+    public static void printStatisticReport(double profits, int packagesShipped, int numberOfPackages) {
+        System.out.print("==========Statistics==========\n");
+        String.format("%s ", "Profits: " + profits + "\n");
+        String.format("%s ", )
+
+    }
+
     /**
      * Main Method
      *
@@ -56,12 +63,12 @@ public class Warehouse {
         ArrayList<Vehicle> vehicles = DatabaseManager.loadVehicles(VEHICLE_FILE);
         Double profitingOffSlaveLabor = DatabaseManager.loadProfit(PROFIT_FILE);
         int packagesShipped = DatabaseManager.loadPackagesShipped(N_PACKAGES_FILE);
-        Boolean primedayYeet = DatabaseManager.loadPrimeDay(PRIME_DAY_FILE);
+        Boolean primeDayYeet = DatabaseManager.loadPrimeDay(PRIME_DAY_FILE);
 
         //2) Show menu and handle user inputs
         asdf:
         while (prime) {
-            if (primedayYeet) {
+            if (primeDayYeet) {
                 System.out.println(firstMenu);
             } else {
                 System.out.println(secondMenu);
@@ -210,7 +217,7 @@ public class Warehouse {
             }
 
 
-            //3) save data (vehicle, packages, profits, packages shipped and primeday) to files (overwriting them) using DatabaseManager
+            //3) save data (vehicle, packages, profits, packages shipped and primeDay) to files (overwriting them) using DatabaseManager
             DatabaseManager.saveVehicles(VEHICLE_FILE, vehicles);
             DatabaseManager.savePackages(PACKAGE_FILE, packages);
             DatabaseManager.savePackagesShipped(N_PACKAGES_FILE, packagesShipped);

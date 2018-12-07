@@ -12,7 +12,6 @@ public class Package {
      * Default Constructor
      */
     //============================================================================
-    //TODO
     public Package() {
         this.id = "";
         this.product = "";
@@ -46,7 +45,6 @@ public class Package {
      * @return id of package
      */
     public String getID() {
-    	//TODO
     	return id;
     	}
     

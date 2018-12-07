@@ -119,6 +119,10 @@ public class Vehicle {
         return packages;
     }
 
+    public void setMaximumRange(int maximumRange) {
+        this.maximumRange = maximumRange;
+    }
+
     public int getMaximumRange() {
         return maximumRange;
     }
@@ -180,19 +184,20 @@ public class Vehicle {
      * @param warehousePackages List of packages to add from
      */
     public void fill(ArrayList<Package> warehousePackages) {
+        int range = 0;
         int distance = 0;
         boolean loop = true;
         while (loop) {
-            if (!isFull() && warehousePackages.size() != packages.size()) {
+            if (!isFull() && warehousePackages.size() != 0) {
                 for (int i = 0; i < warehousePackages.size(); i++) {
                     distance = zipDest - warehousePackages.get(i).getDestination().getZipCode();
-                    if (Math.abs(distance) == getZipDest()) {
+                    if (Math.abs(distance) == range) {
                         if (addPackage(warehousePackages.get(i))) {
                             maximumRange = distance;
                         }
                     }
                 }
-                distance++;
+                range++;
             } else {
                 loop = false;
             }

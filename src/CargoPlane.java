@@ -31,10 +31,11 @@ public class CargoPlane extends Vehicle implements Profitable {
      */
     @Override
     public void fill(ArrayList<Package> warehousePackages) {
+        int range = 0;
         int distance = 0;
         boolean loop = true;
         while (loop) {
-            if (!isFull() && warehousePackages.size() != super.getPackages().size()) {
+            if (!isFull() && warehousePackages.size() != 0) {
                 for (int i = 0; i < warehousePackages.size(); i++) {
                     distance = super.getZipDest() - warehousePackages.get(i).getDestination().getZipCode();
                     if (Math.abs(distance) == getZipDest()) {
@@ -42,7 +43,7 @@ public class CargoPlane extends Vehicle implements Profitable {
                             distance = super.getMaximumRange();
                         }
                     }
-                    distance += 10;
+                    range += 10;
                 }
             } else {
                 loop = false;
