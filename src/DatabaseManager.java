@@ -320,7 +320,7 @@ public class DatabaseManager {
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(nPackages);
+            bw.write(Integer.toString(nPackages));
             bw.flush();
             bw.close();
         } catch (IOException e) {
