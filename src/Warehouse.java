@@ -21,7 +21,6 @@ public class Warehouse {
         String np = String.format("%s ", "Packages in Warehouse: " + numberOfPackages + "\n");
         System.out.println(p + ps + np);
         System.out.println("==============================");
-
     }
 
     /**
