@@ -16,9 +16,9 @@ public class Warehouse {
 
     public static void printStatisticsReport(double profits, int packagesShipped, int numberOfPackages) {
         System.out.print("==========Statistics==========\n");
-       String p = String.format("%s ", "Profits: " + profits + "\n");
-       String ps = String.format("%s ", "Packages Shipped: " + packagesShipped + "\n");
-       String np = String.format("%s ", "Packages in Warehouse: " + numberOfPackages + "\n");
+        String p = String.format("%s ", "Profits: " + profits + "\n");
+        String ps = String.format("%s ", "Packages Shipped: " + packagesShipped + "\n");
+        String np = String.format("%s ", "Packages in Warehouse: " + numberOfPackages + "\n");
         System.out.println(p + ps + np);
         System.out.println("==============================");
 
@@ -77,6 +77,7 @@ public class Warehouse {
             switch (s.nextInt()) {
                 case 1:
                     System.out.println("Enter Package ID:");
+                    s.nextLine();
                     packageID = s.nextLine();
                     System.out.println("Enter Product Name:");
                     productName = s.nextLine();
@@ -101,7 +102,7 @@ public class Warehouse {
                     Package packed = new Package(packageID, productName, Double.parseDouble(weight),
                             Double.parseDouble(price), destination);
                     packages.add(packed);
-                    packed.shippingLabel();
+                    System.out.println(packed.shippingLabel());
                     break;
                 case 2:
                     boolean something = true;
@@ -159,60 +160,276 @@ public class Warehouse {
                                 "4) Send First Available");
                         switch (s.nextInt()) {
                             case 1:
-                                for (int i = 0; i < vehicles.size(); i++) {
-                                    if (vehicles.get(i) instanceof Truck) {
-                                        profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
-                                        packagesShipped += vehicles.get(i).getPackages().size();
-                                        vehicles.remove(i);
-                                        break;
-                                    }
+                                System.out.println("ZIP Code Options:\n" +
+                                        "1) Send to first ZIP Code\n" +
+                                        "2) Send to mode of ZIP Codes");
+                                switch (s.nextInt()) {
+                                    case 1:
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            if (vehicles.get(i) instanceof Truck) {
+                                                vehicles.get(i)
+                                                        .setZipDest(packages.get(0).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((Truck) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            }
+                                        }
+                                    case 2:
+                                        int c;
+                                        ArrayList<Integer> a = new ArrayList<>();
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            if (vehicles.get(i) instanceof Truck) {
+                                                for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
+                                                    c = 0;
+                                                    for (int j = 0; j < vehicles.get(i).getPackages().size(); j++) {
+                                                        if (vehicles.get(i).getPackages().get(k).getDestination()
+                                                                .getZipCode()
+                                                                == vehicles.get(i).getPackages().get(j)
+                                                                .getDestination().getZipCode()) {
+                                                            c++;
+                                                        }
+                                                    }
+                                                    a.add(c);
+                                                }
+                                                int max = 0;
+                                                int maxy = 0;
+                                                for (int l = 0; l < a.size(); l++) {
+                                                    if (a.get(l) > max) {
+                                                        max = a.get(l);
+                                                        maxy = l;
+                                                    }
+                                                }
+                                                vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
+                                                        .get(i).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((Truck) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            }
+                                        }
+
                                 }
+
                             case 2:
-                                for (int i = 0; i < vehicles.size(); i++) {
-                                    if (vehicles.get(i) instanceof Drone) {
-                                        profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
-                                        packagesShipped += vehicles.get(i).getPackages().size();
-                                        vehicles.remove(i);
-                                        break;
-                                    }
+                                System.out.println("ZIP Code Options:\n" +
+                                        "1) Send to first ZIP Code\n" +
+                                        "2) Send to mode of ZIP Codes");
+                                switch (s.nextInt()) {
+                                    case 1:
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            if (vehicles.get(i) instanceof Drone) {
+                                                vehicles.get(i)
+                                                        .setZipDest(packages.get(0).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((Drone) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            }
+                                        }
+                                    case 2:
+                                        int c;
+                                        ArrayList<Integer> a = new ArrayList<>();
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            if (vehicles.get(i) instanceof Drone) {
+                                                for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
+                                                    c = 0;
+                                                    for (int j = 0; j < vehicles.get(i).getPackages().size(); j++) {
+                                                        if (vehicles.get(i).getPackages().get(k).getDestination()
+                                                                .getZipCode()
+                                                                == vehicles.get(i).getPackages().get(j)
+                                                                .getDestination().getZipCode()) {
+                                                            c++;
+                                                        }
+                                                    }
+                                                    a.add(c);
+                                                }
+                                                int max = 0;
+                                                int maxy = 0;
+                                                for (int l = 0; l < a.size(); l++) {
+                                                    if (a.get(l) > max) {
+                                                        max = a.get(l);
+                                                        maxy = l;
+                                                    }
+                                                }
+                                                vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
+                                                        .get(i).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((Truck) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            }
+                                        }
                                 }
                             case 3:
-                                for (int i = 0; i < vehicles.size(); i++) {
-                                    if (vehicles.get(i) instanceof CargoPlane) {
-                                        profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
-                                        packagesShipped += vehicles.get(i).getPackages().size();
-                                        vehicles.remove(i);
-                                        break;
-                                    }
+                                System.out.println("ZIP Code Options:\n" +
+                                        "1) Send to first ZIP Code\n" +
+                                        "2) Send to mode of ZIP Codes");
+                                switch (s.nextInt()) {
+                                    case 1:
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            if (vehicles.get(i) instanceof CargoPlane) {
+                                                vehicles.get(i)
+                                                        .setZipDest(packages.get(0).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((CargoPlane) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            }
+                                        }
+                                    case 2:
+                                        int c;
+                                        ArrayList<Integer> a = new ArrayList<>();
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            if (vehicles.get(i) instanceof CargoPlane) {
+                                                for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
+                                                    c = 0;
+                                                    for (int j = 0; j < vehicles.get(i).getPackages().size(); j++) {
+                                                        if (vehicles.get(i).getPackages().get(k).getDestination()
+                                                                .getZipCode()
+                                                                == vehicles.get(i).getPackages().get(j)
+                                                                .getDestination().getZipCode()) {
+                                                            c++;
+                                                        }
+                                                    }
+                                                    a.add(c);
+                                                }
+                                                int max = 0;
+                                                int maxy = 0;
+                                                for (int l = 0; l < a.size(); l++) {
+                                                    if (a.get(l) > max) {
+                                                        max = a.get(l);
+                                                        maxy = l;
+                                                    }
+                                                }
+                                                vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
+                                                        .get(i).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((CargoPlane) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            }
+                                        }
                                 }
                             case 4:
-                                for (int i = 0; i < vehicles.size(); i++) {
-                                    if (vehicles.get(i) != null) {
-                                        if (vehicles.get(i) instanceof CargoPlane) {
-                                            profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
-                                            packagesShipped += vehicles.get(i).getPackages().size();
-                                            vehicles.remove(i);
-                                            break;
-                                        } else if (vehicles.get(i) instanceof Drone) {
-                                            profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
-                                            packagesShipped += vehicles.get(i).getPackages().size();
-                                            vehicles.remove(i);
-                                            break;
-                                        } else if (vehicles.get(i) instanceof Truck) {
+                                System.out.println("ZIP Code Options:\n" +
+                                        "1) Send to first ZIP Code\n" +
+                                        "2) Send to mode of ZIP Codes");
+                                switch (s.nextInt()) {
+                                    case 1:
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            vehicles.get(i)
+                                                    .setZipDest(packages.get(0).getDestination().getZipCode());
+                                            vehicles.get(i).fill(packages);
+                                            ((Truck) vehicles.get(i)).report();
                                             profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
                                             packagesShipped += vehicles.get(i).getPackages().size();
-                                            vehicles.remove(i);
                                             break;
                                         }
-                                    }
+                                    case 2:
+                                        int c;
+                                        ArrayList<Integer> a = new ArrayList<>();
+                                        for (int i = 0; i < vehicles.size(); i++) {
+                                            if (vehicles.get(i) instanceof Truck) {
+                                                for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
+                                                    c = 0;
+                                                    for (int j = 0; j < vehicles.get(i).getPackages().size(); j++) {
+                                                        if (vehicles.get(i).getPackages().get(k).getDestination()
+                                                                .getZipCode()
+                                                                == vehicles.get(i).getPackages().get(j)
+                                                                .getDestination().getZipCode()) {
+                                                            c++;
+                                                        }
+                                                    }
+                                                    a.add(c);
+                                                }
+                                                int max = 0;
+                                                int maxy = 0;
+                                                for (int l = 0; l < a.size(); l++) {
+                                                    if (a.get(l) > max) {
+                                                        max = a.get(l);
+                                                        maxy = l;
+                                                    }
+                                                }
+                                                vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
+                                                        .get(i).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((Truck) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            } else if (vehicles.get(i) instanceof Drone) {
+                                                for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
+                                                    c = 0;
+                                                    for (int j = 0; j < vehicles.get(i).getPackages().size(); j++) {
+                                                        if (vehicles.get(i).getPackages().get(k).getDestination()
+                                                                .getZipCode()
+                                                                == vehicles.get(i).getPackages().get(j)
+                                                                .getDestination().getZipCode()) {
+                                                            c++;
+                                                        }
+                                                    }
+                                                    a.add(c);
+                                                }
+                                                int max = 0;
+                                                int maxy = 0;
+                                                for (int l = 0; l < a.size(); l++) {
+                                                    if (a.get(l) > max) {
+                                                        max = a.get(l);
+                                                        maxy = l;
+                                                    }
+                                                }
+                                                vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
+                                                        .get(i).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((Truck) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            } else if (vehicles.get(i) instanceof CargoPlane) {
+                                                for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
+                                                    c = 0;
+                                                    for (int j = 0; j < vehicles.get(i).getPackages().size(); j++) {
+                                                        if (vehicles.get(i).getPackages().get(k).getDestination()
+                                                                .getZipCode()
+                                                                == vehicles.get(i).getPackages().get(j)
+                                                                .getDestination().getZipCode()) {
+                                                            c++;
+                                                        }
+                                                    }
+                                                    a.add(c);
+                                                }
+                                                int max = 0;
+                                                int maxy = 0;
+                                                for (int l = 0; l < a.size(); l++) {
+                                                    if (a.get(l) > max) {
+                                                        max = a.get(l);
+                                                        maxy = l;
+                                                    }
+                                                }
+                                                vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
+                                                        .get(i).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                ((CargoPlane) vehicles.get(i)).report();
+                                                profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                break;
+                                            }
+                                        }
                                 }
                         }
                     }
 
                 case 5:
-                    printStatisticsReport(profitingOffSlaveLabor, packagesShipped, packages.size()
-                            - packagesShipped);
-
+                    printStatisticsReport(profitingOffSlaveLabor, packagesShipped,
+                            packages.size() - packagesShipped);
+                    break;
                 case 6:
                     break asdf;
                 default:

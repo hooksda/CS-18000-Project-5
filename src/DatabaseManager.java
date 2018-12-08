@@ -221,11 +221,14 @@ public class DatabaseManager {
             BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < vehicles.size(); i++) {
                 if (vehicles.get(i) instanceof Truck) {
-                    bw.write("Truck," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight());
+                    bw.write("Truck," + vehicles.get(i).getLicensePlate() + "," +
+                            vehicles.get(i).getMaxWeight() + "\n");
                 }else if (vehicles.get(i) instanceof Drone) {
-                    bw.write("Drone," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight());
+                    bw.write("Drone," + vehicles.get(i).getLicensePlate() + "," +
+                            vehicles.get(i).getMaxWeight() + "\n");
                 }else if (vehicles.get(i) instanceof CargoPlane) {
-                    bw.write("Cargo Plane," + vehicles.get(i).getLicensePlate() + "," + vehicles.get(i).getMaxWeight());
+                    bw.write("Cargo Plane," + vehicles.get(i).getLicensePlate() + "," +
+                            vehicles.get(i).getMaxWeight() + "\n");
                 }
             }
             bw.flush();
@@ -269,7 +272,7 @@ public class DatabaseManager {
                         packages.get(i).getDestination().getName() + ","
                         + packages.get(i).getDestination().getAddress() + "," +
                         packages.get(i).getDestination().getCity() + "," + packages.get(i).getDestination().getState() +
-                        "," + packages.get(i).getDestination().getZipCode());
+                        "," + packages.get(i).getDestination().getZipCode() + "\n");
             }
             bw.flush();
             bw.close();

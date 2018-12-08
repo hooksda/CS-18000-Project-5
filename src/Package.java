@@ -146,7 +146,7 @@ public class Package {
                  destination.getCity() + ", " + destination.getState() + ", " + destination.getZipCode() + "\n" +
                 "Weight: " + weight + "\n" +
                 "Price: " + price + "\n" +
-                "Product:" + product + "\n" + "====================";
+                "Product: " + product + "\n" + "====================";
     }
 
     public String getId() {
