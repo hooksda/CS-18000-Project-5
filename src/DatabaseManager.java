@@ -345,9 +345,9 @@ public class DatabaseManager {
         try {
             FileWriter fw = new FileWriter(file);
             if (primeDay) {
-                fw.write("0");
-            } else {
                 fw.write("1");
+            } else {
+                fw.write("0");
             }
             fw.close();
         } catch (IOException e) {

@@ -67,7 +67,7 @@ public class Warehouse {
 
         //2) Show menu and handle user inputs
         asdf:
-        while (prime) {
+        while (true) {
             if (primeDayYeet) {
                 System.out.println(firstMenu);
             } else {
@@ -146,8 +146,13 @@ public class Warehouse {
 
                         }
                     }
+                    break;
                 case 3:
-
+                    if (primeDayYeet) {
+                        primeDayYeet = false;
+                    } else {
+                        primeDayYeet = true;
+                    }
                     break;
                 case 4:
                     if (vehicles.size() == 0) {
@@ -178,6 +183,7 @@ public class Warehouse {
                                                 break;
                                             }
                                         }
+                                        break;
                                     case 2:
                                         int c;
                                         ArrayList<Integer> a = new ArrayList<>();
@@ -212,7 +218,7 @@ public class Warehouse {
                                                 break;
                                             }
                                         }
-
+                                        break;
                                 }
 
                             case 2:
@@ -232,6 +238,7 @@ public class Warehouse {
                                                 break;
                                             }
                                         }
+                                        break;
                                     case 2:
                                         int c;
                                         ArrayList<Integer> a = new ArrayList<>();
@@ -267,6 +274,7 @@ public class Warehouse {
                                             }
                                         }
                                 }
+                                break;
                             case 3:
                                 System.out.println("ZIP Code Options:\n" +
                                         "1) Send to first ZIP Code\n" +
@@ -284,6 +292,7 @@ public class Warehouse {
                                                 break;
                                             }
                                         }
+                                        break;
                                     case 2:
                                         int c;
                                         ArrayList<Integer> a = new ArrayList<>();
@@ -319,6 +328,7 @@ public class Warehouse {
                                             }
                                         }
                                 }
+                                break;
                             case 4:
                                 System.out.println("ZIP Code Options:\n" +
                                         "1) Send to first ZIP Code\n" +
@@ -334,6 +344,7 @@ public class Warehouse {
                                             packagesShipped += vehicles.get(i).getPackages().size();
                                             break;
                                         }
+                                        break;
                                     case 2:
                                         int c;
                                         ArrayList<Integer> a = new ArrayList<>();
@@ -424,10 +435,12 @@ public class Warehouse {
                                                 break;
                                             }
                                         }
+                                        break;
                                 }
+                                break;
                         }
                     }
-
+                    break;
                 case 5:
                     printStatisticsReport(profitingOffSlaveLabor, packagesShipped,
                             packages.size() - packagesShipped);
