@@ -33,7 +33,7 @@ public class DatabaseManager {
             }
             for (int i = 0; i < strings.size(); i++) {
                 String[] details = strings.get(i).split(",");
-                if (details.length == 2) {
+                if (details.length == 3) {
                     if (details[0].equals("Drone")) {
                        vehicles.add(new Drone(details[1], Double.parseDouble(details[2])));
                     } else if (details[0].equals("Truck")) {
@@ -44,6 +44,7 @@ public class DatabaseManager {
                 }
             }
             br.close();
+            return vehicles;
         } catch (IOException e) {
 
         }
@@ -319,10 +320,8 @@ public class DatabaseManager {
     	//TODO
         try {
             FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(Integer.toString(nPackages));
-            bw.flush();
-            bw.close();
+            fw.write(Integer.toString(nPackages));
+            fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -345,16 +344,12 @@ public class DatabaseManager {
     	//TODO
         try {
             FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
             if (primeDay) {
                 fw.write("0");
             } else {
                 fw.write("1");
             }
-            fw.flush();
-            bw.flush();
             fw.close();
-            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

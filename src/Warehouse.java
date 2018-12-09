@@ -113,27 +113,30 @@ public class Warehouse {
                         switch (s.nextInt()) {
                             case 1:
                                 System.out.println("Enter License Plate No.:");
+                                s.nextLine();
                                 String licensePlate = s.nextLine();
                                 System.out.println("Enter Maximum Carry Weight:");
-                                int carryWeight = s.nextInt();
+                                Double carryWeight = s.nextDouble();
                                 Truck truck = new Truck(licensePlate, carryWeight);
                                 vehicles.add(truck);
                                 something = false;
                                 break;
                             case 2:
                                 System.out.println("Enter License Plate No.:");
+                                s.nextLine();
                                 licensePlate = s.nextLine();
                                 System.out.println("Enter Maximum Carry Weight:");
-                                carryWeight = s.nextInt();
+                                carryWeight = s.nextDouble();
                                 Drone drone = new Drone(licensePlate, carryWeight);
                                 vehicles.add(drone);
                                 something = false;
                                 break;
                             case 3:
                                 System.out.println("Enter License Plate No.:");
+                                s.nextLine();
                                 licensePlate = s.nextLine();
                                 System.out.println("Enter Maximum Carry Weight:");
-                                carryWeight = s.nextInt();
+                                carryWeight = s.nextDouble();
                                 CargoPlane cargoPlane = new CargoPlane(licensePlate, carryWeight);
                                 vehicles.add(cargoPlane);
                                 something = false;

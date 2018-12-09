@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 /**
  * <h1>Package</h1> Represents a package
  */
@@ -141,11 +143,12 @@ public class Package {
      */
     public String shippingLabel() {
     	//TODO
+        NumberFormat fm = NumberFormat.getCurrencyInstance();
          return "====================\n" +
                 "TO: " + destination.getName() + "\n" + destination.getAddress() + "\n" +
                  destination.getCity() + ", " + destination.getState() + ", " + destination.getZipCode() + "\n" +
-                "Weight: " + weight + "\n" +
-                "Price: " + price + "\n" +
+                String.format("Weight: %.2f", weight) + "\n" +
+                "Price: " + fm.format(price) + "\n" +
                 "Product: " + product + "\n" + "====================";
     }
 
