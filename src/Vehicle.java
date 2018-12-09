@@ -127,13 +127,13 @@ public class Vehicle {
                         if (addPackage(warehousePackages.get(i))) {
                             maximumRange = distance;
                         } else {
-                            loop = false;
+                            break;
                         }
                     }
+                    range++;
                 }
-                range++;
-            }
-            else {
+
+            } else {
                 loop = false;
             }
         }
