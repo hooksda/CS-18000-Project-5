@@ -101,18 +101,13 @@ public class Vehicle {
 
 
     public boolean isFull() {
-        /*for (int i = 0; i < packages.size(); i++) {
-            if (packages.get(i).getWeight() + currentWeight < maxWeight) {
-                return false;
+        for (int i = 0; i < packages.size(); i++) {
+            if (packages.get(i).getWeight() + currentWeight > maxWeight) {
+                return true;
             }
         }
-        return true;
-        */
-        if(getCurrentWeight() == getMaxWeight()) {
-            return true;
-        } else {
-            return false;
-        }
+        return false;
+
     }
 
     public void fill(ArrayList<Package> warehousePackages) {
@@ -125,14 +120,16 @@ public class Vehicle {
                     distance = zipDest - warehousePackages.get(i).getDestination().getZipCode();
                     if (Math.abs(distance) == range) {
                         if (addPackage(warehousePackages.get(i))) {
-                            maximumRange = distance;
+                            if (Math.abs(distance) > maximumRange) {
+                                maximumRange = Math.abs(distance);
+                            }
                         } else {
                             break;
                         }
                     }
                     range++;
                 }
-
+                break;
             } else {
                 loop = false;
             }
