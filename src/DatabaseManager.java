@@ -347,11 +347,13 @@ public class DatabaseManager {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
             if (primeDay) {
-                bw.write("0");
+                fw.write("0");
             } else {
-                bw.write("1");
+                fw.write("1");
             }
+            fw.flush();
             bw.flush();
+            fw.close();
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
