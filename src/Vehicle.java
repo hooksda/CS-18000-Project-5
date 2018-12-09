@@ -118,24 +118,28 @@ public class Vehicle {
         int range = 0;
         int distance = 0;
         boolean loop = true;
+        int counter = 0;
         while (loop) {
-            if (!isFull() && warehousePackages.size() != 0) {
-                for (int i = 0; i < warehousePackages.size(); i++) {
+            for (int i = 0; i < warehousePackages.size(); i++) {
+                if (warehousePackages.get(i).getWeight() + currentWeight <= maxWeight) {
                     distance = zipDest - warehousePackages.get(i).getDestination().getZipCode();
                     if (Math.abs(distance) == range) {
+                        counter++;
                         if (addPackage(warehousePackages.get(i))) {
                             if (Math.abs(distance) > maximumRange) {
                                 maximumRange = Math.abs(distance);
                             }
-                        } else {
-                            loop = false;
                         }
                     }
+                } else {
+                    loop = false;
                 }
-                range++;
-            } else {
+
+            }
+            if (counter == warehousePackages.size()) {
                 loop = false;
             }
+            range++;
         }
     }
 }
