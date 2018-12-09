@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-
-
 /**
- * <h1>CargoPlane</h1> Represents a Cargo Plane
+ * @author Jaewook Lee, Daniel Hooks
+ * @version 12/9/18
  */
+
 public class CargoPlane extends Vehicle implements Profitable {
     final double GAS_RATE = 2.33;
 
@@ -23,9 +23,11 @@ public class CargoPlane extends Vehicle implements Profitable {
             if (!isFull() && warehousePackages.size() != 0) {
                 for (int i = 0; i < warehousePackages.size(); i++) {
                     distance = getZipDest() - warehousePackages.get(i).getDestination().getZipCode();
-                    if (Math.abs(distance) == range) {
+                    if (Math.abs(distance) <= range && Math.abs(distance) > range - 10) {
                         if (addPackage(warehousePackages.get(i))) {
-                           distance = getMaximumRange();
+                            if (Math.abs(distance) > getMaximumRange()) {
+                                setMaximumRange(Math.abs(distance));
+                            }
                         } else {
                             loop = false;
                         }
@@ -52,7 +54,7 @@ public class CargoPlane extends Vehicle implements Profitable {
         for (int i = 0; i < super.getPackages().size(); i++) {
             summation += super.getPackages().get(i).getPrice();
         }
-        return summation - (super.getMaximumRange() * GAS_RATE);
+        return summation - (getMaximumRange() * GAS_RATE);
     }
 
     @Override

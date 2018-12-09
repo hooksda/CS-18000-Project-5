@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/**
+ * @author Jaewook Lee, Daniel Hooks
+ * @version 12/9/18
+ */
 /**
  * <h1>Drone</h1> Represents a Drone
  */
@@ -43,10 +46,10 @@ public class Drone extends Vehicle implements Profitable {
     @Override
     public double getProfit() {
     	double summation = 0;
-        for (int i = 0; i < super.getPackages().size(); i++) {
-            summation += super.getPackages().get(i).getPrice();
+        for (int i = 0; i < getPackages().size(); i++) {
+            summation += getPackages().get(i).getPrice();
         }
-    	return summation - (super.getMaximumRange() * GAS_RATE);
+    	return summation - (getMaximumRange() * GAS_RATE);
     }
 
     /**

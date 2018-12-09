@@ -1,6 +1,9 @@
 import java.io.File;
 import java.util.*;
-
+/**
+ * @author Jaewook Lee, Daniel Hooks
+ * @version 12/9/18
+ */
 /**
  * <h1>Warehouse</h1>
  */
@@ -177,9 +180,10 @@ public class Warehouse {
                                                 vehicles.get(i)
                                                         .setZipDest(packages.get(0).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((Truck) vehicles.get(i)).report();
+                                                System.out.println(((Truck) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             }
                                         }
@@ -212,9 +216,10 @@ public class Warehouse {
                                                 vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
                                                         .get(i).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((Truck) vehicles.get(i)).report();
+                                                System.out.println(((Truck) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             }
                                         }
@@ -232,9 +237,10 @@ public class Warehouse {
                                                 vehicles.get(i)
                                                         .setZipDest(packages.get(0).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((Drone) vehicles.get(i)).report();
+                                                System.out.println(((Drone) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             }
                                         }
@@ -267,9 +273,10 @@ public class Warehouse {
                                                 vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
                                                         .get(i).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((Truck) vehicles.get(i)).report();
-                                                profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                                System.out.println(((Drone) vehicles.get(i)).report());
+                                                profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             }
                                         }
@@ -286,9 +293,10 @@ public class Warehouse {
                                                 vehicles.get(i)
                                                         .setZipDest(packages.get(0).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((CargoPlane) vehicles.get(i)).report();
+                                                System.out.println(((CargoPlane) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             }
                                         }
@@ -321,9 +329,10 @@ public class Warehouse {
                                                 vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
                                                         .get(i).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((CargoPlane) vehicles.get(i)).report();
+                                                System.out.println(((CargoPlane) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             }
                                         }
@@ -336,13 +345,32 @@ public class Warehouse {
                                 switch (s.nextInt()) {
                                     case 1:
                                         for (int i = 0; i < vehicles.size(); i++) {
-                                            vehicles.get(i)
-                                                    .setZipDest(packages.get(0).getDestination().getZipCode());
-                                            vehicles.get(i).fill(packages);
-                                            ((Truck) vehicles.get(i)).report();
-                                            profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
-                                            packagesShipped += vehicles.get(i).getPackages().size();
-                                            break;
+                                            if (vehicles.get(i) instanceof Truck) {
+                                                vehicles.get(i)
+                                                        .setZipDest(packages.get(0).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                System.out.println(((Truck) vehicles.get(i)).report());
+                                                profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
+                                                break;
+                                            } else if (vehicles.get(i) instanceof Drone) {
+                                                vehicles.get(i)
+                                                        .setZipDest(packages.get(0).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                System.out.println(((Drone) vehicles.get(i)).report());
+                                                profitingOffSlaveLabor += ((Drone) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
+                                            } else if (vehicles.get(i) instanceof CargoPlane) {
+                                                vehicles.get(i)
+                                                        .setZipDest(packages.get(0).getDestination().getZipCode());
+                                                vehicles.get(i).fill(packages);
+                                                System.out.println(((CargoPlane) vehicles.get(i)).report());
+                                                profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
+                                                packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
+                                            }
                                         }
                                         break;
                                     case 2:
@@ -373,9 +401,10 @@ public class Warehouse {
                                                 vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
                                                         .get(i).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((Truck) vehicles.get(i)).report();
+                                                System.out.println(((Truck) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             } else if (vehicles.get(i) instanceof Drone) {
                                                 for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
@@ -401,9 +430,10 @@ public class Warehouse {
                                                 vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
                                                         .get(i).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((Truck) vehicles.get(i)).report();
+                                                System.out.println(((Drone) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((Truck) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             } else if (vehicles.get(i) instanceof CargoPlane) {
                                                 for (int k = 0; k < vehicles.get(i).getPackages().size(); k++) {
@@ -429,9 +459,10 @@ public class Warehouse {
                                                 vehicles.get(i).setZipDest(vehicles.get(i).getPackages()
                                                         .get(i).getDestination().getZipCode());
                                                 vehicles.get(i).fill(packages);
-                                                ((CargoPlane) vehicles.get(i)).report();
+                                                System.out.println(((CargoPlane) vehicles.get(i)).report());
                                                 profitingOffSlaveLabor += ((CargoPlane) vehicles.get(i)).getProfit();
                                                 packagesShipped += vehicles.get(i).getPackages().size();
+                                                vehicles.get(i).empty();
                                                 break;
                                             }
                                         }

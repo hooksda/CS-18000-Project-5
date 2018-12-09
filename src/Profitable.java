@@ -1,4 +1,8 @@
 /**
+ * @author Jaewook Lee, Daniel Hooks
+ * @version 12/9/18
+ */
+/**
  * <h1>Profitable</h1>
  * 
  * This interface represents something that can be used to make a profit. Along

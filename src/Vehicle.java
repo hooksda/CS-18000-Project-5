@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+/**
+ * @author Jaewook Lee, Daniel Hooks
+ * @version 12/9/18
+ */
 
 /**
  * <h1>Vehicle</h1> Represents a vehicle
@@ -102,11 +106,11 @@ public class Vehicle {
 
     public boolean isFull() {
         for (int i = 0; i < packages.size(); i++) {
-            if (packages.get(i).getWeight() + currentWeight > maxWeight) {
-                return true;
+            if (packages.get(i).getWeight() + currentWeight < maxWeight) {
+                return false;
             }
         }
-        return false;
+        return true;
 
     }
 
@@ -124,24 +128,15 @@ public class Vehicle {
                                 maximumRange = Math.abs(distance);
                             }
                         } else {
-                            break;
+                            loop = false;
                         }
                     }
-                    range++;
                 }
-                break;
+                range++;
             } else {
                 loop = false;
             }
         }
-    }
-
-    public double getProfit() {
-        return 0.0;
-    }
-
-    public String report() {
-        return "";
     }
 }
 

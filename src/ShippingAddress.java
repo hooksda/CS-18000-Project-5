@@ -1,5 +1,7 @@
+
 /**
- * <h1>Shipping Address</h1> Represents a shipping address
+ * @author Jaewook Lee, Daniel Hooks
+ * @version 12/9/18
  */
 public class ShippingAddress {
 	//TODO

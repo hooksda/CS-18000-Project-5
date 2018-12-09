@@ -1,5 +1,8 @@
 import java.text.NumberFormat;
-
+/**
+ * @author Jaewook Lee, Daniel Hooks
+ * @version 12/9/18
+ */
 /**
  * <h1>Package</h1> Represents a package
  */
