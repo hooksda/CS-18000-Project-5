@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 
 /**
- * <h1>Vehicle</h1> Represents a vehicle
- *
- * @author Jaewook Lee, Daniel Hooks, lab sec 11
+ * @author Jaewook Lee, Daniel Hooks
  * @version 12/9/18
  */
+
 
 public class Vehicle {
     private String licensePlate;
@@ -116,8 +115,8 @@ public class Vehicle {
     public void fill(ArrayList<Package> warehousePackages) {
         int range = 0;
         int distance = 0;
-        int counter = 0;
         boolean loop = true;
+        int counter = 0;
         while (loop) {
             for (int i = 0; i < warehousePackages.size(); i++) {
                 if (warehousePackages.get(i).getWeight() + currentWeight <= maxWeight) {

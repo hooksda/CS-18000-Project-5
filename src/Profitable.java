@@ -1,8 +1,5 @@
-
 /**
- * <h1>Profitable</h1>
- *
- * @author Jaewook Lee, Daniel Hooks, lab sec 11
+ * @author Jaewook Lee, Daniel Hooks
  * @version 12/9/18
  */
 public interface Profitable {

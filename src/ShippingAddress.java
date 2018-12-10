@@ -1,9 +1,10 @@
 
 /**
- * @author Jaewook Lee, Daniel Hooks, lab sec 11
+ * @author Jaewook Lee, Daniel Hooks
  * @version 12/9/18
  */
 public class ShippingAddress {
+    //
     private String name;
     private String address;
     private String city;

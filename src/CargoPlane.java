@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+
 /**
  * @author Jaewook Lee, Daniel Hooks
  * @version 12/9/18
  */
 
 public class CargoPlane extends Vehicle implements Profitable {
-    final double GAS_RATE = 2.33;
+    final double gasRate = 2.33;
 
     public CargoPlane() {
     }
@@ -64,7 +65,7 @@ public class CargoPlane extends Vehicle implements Profitable {
             if (counter == warehousePackages.size()) {
                 loop = false;
             }
-            range+= 10;
+            range += 10;
         }
     }
 
@@ -82,7 +83,7 @@ public class CargoPlane extends Vehicle implements Profitable {
         for (int i = 0; i < super.getPackages().size(); i++) {
             summation += super.getPackages().get(i).getPrice();
         }
-        return summation - (getMaximumRange() * GAS_RATE);
+        return summation - (getMaximumRange() * gasRate);
     }
 
     @Override
