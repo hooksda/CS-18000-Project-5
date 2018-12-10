@@ -1,11 +1,11 @@
 import java.io.File;
 import java.util.*;
-/**
- * @author Jaewook Lee, Daniel Hooks
- * @version 12/9/18
- */
+
 /**
  * <h1>Warehouse</h1>
+ *
+ * @author Jaewook Lee, Daniel Hooks, lab sec 11
+ * @version 12/9/18
  */
 
 public class Warehouse {
@@ -32,7 +32,6 @@ public class Warehouse {
      * @param args list of command line arguements
      */
     public static void main(String[] args) {
-        //TODO
         Boolean prime = true;
         Scanner s = new Scanner(System.in);
         String firstMenu = "==========Options==========\n" +
@@ -482,8 +481,6 @@ public class Warehouse {
                     System.out.println(errorMessage);
             }
 
-
-            //3) save data (vehicle, packages, profits, packages shipped and primeDay) to files (overwriting them) using DatabaseManager
             DatabaseManager.saveVehicles(VEHICLE_FILE, vehicles);
             DatabaseManager.savePackages(PACKAGE_FILE, packages);
             DatabaseManager.savePackagesShipped(N_PACKAGES_FILE, packagesShipped);

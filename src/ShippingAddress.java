@@ -1,15 +1,15 @@
 
 /**
- * @author Jaewook Lee, Daniel Hooks
+ * @author Jaewook Lee, Daniel Hooks, lab sec 11
  * @version 12/9/18
  */
 public class ShippingAddress {
-	//TODO
     private String name;
     private String address;
     private String city;
     private String state;
     private int zipCode;
+
     public ShippingAddress() {
         name = "";
         address = "";
@@ -17,12 +17,13 @@ public class ShippingAddress {
         state = "";
         zipCode = 0;
     }
+
     public ShippingAddress(String name, String address, String city, String state, int zipCode) {
-     this.name = name;
-     this.address = address;
-     this.city = city;
-     this.state = state;
-     this.zipCode = zipCode;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
     }
 
     public String getName() {

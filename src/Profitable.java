@@ -1,15 +1,13 @@
-/**
- * @author Jaewook Lee, Daniel Hooks
- * @version 12/9/18
- */
+
 /**
  * <h1>Profitable</h1>
- * 
- * This interface represents something that can be used to make a profit. Along
- * with returning total profits it must also be able to provide a report.
+ *
+ * @author Jaewook Lee, Daniel Hooks, lab sec 11
+ * @version 12/9/18
  */
 public interface Profitable {
     double getProfit();
+
     String report();
 
 }
