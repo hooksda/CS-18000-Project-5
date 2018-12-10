@@ -10,11 +10,13 @@ public class DatabaseManager {
     public static ArrayList<Vehicle> loadVehicles(File file) {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         try {
+            String line;
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             ArrayList<String> strings = new ArrayList<>();
-            for (String line; (line = br.readLine()) != null; ) {
+            for (line = br.readLine(); line != null; ) {
                 strings.add(line);
+                line = br.readLine();
             }
             for (int i = 0; i < strings.size(); i++) {
                 String[] details = strings.get(i).split(",");
@@ -39,11 +41,13 @@ public class DatabaseManager {
     public static ArrayList<Package> loadPackages(File file) {
         ArrayList<Package> packages = new ArrayList<>();
         try {
+            String line;
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             ArrayList<String> strings = new ArrayList<>();
-            for (String line; (line = br.readLine()) != null; ) {
+            for (line = br.readLine(); line != null; ) {
                 strings.add(line);
+                line = br.readLine();
             }
             String id = "";
             String productName = "";
